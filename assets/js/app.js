@@ -45,6 +45,18 @@ const participants = ["Grégory", "Julien", "Nicolas", "Pierre", "Paul", "Jacque
 const numberGroups = 3;
 
 /** 
+* Fonction de tri
+* @param {array} array
+*/
+function shuffle(array){
+    array.sort((a, b) => 0.5 - Math.random()); 
+// je commence par trier mon tableau, 
+//et j'applique une valeur aléatoire entre 0 et 1 grace au math.random 
+//(le 0,5 permet d'avoir autant de chance de tomber en dessous ou au dessus de 0,5 )
+
+}
+
+/** 
 * Fonction de génération des groupes
 * @param {array} participants
 * @param {int} numberGroups
@@ -56,13 +68,11 @@ function generateGroups(participants, numberGroups){
 // Applique une fonction sur chaque élément du tableau 
 // Et retourne un nouveau tableau
 const sorted = participants
-
 /* .map((participant) => ({ name : participant, sort: Math.random() }))
 .sort((a, b) => a.sort - b.sort)
 .map((participant) => participant.name) */
 
-sorted.sort((a, b) => 0.5 - Math.random());
-//console.log(sorted)
+shuffle(sorted)
 
 //Je veux générer des groupes de nom
 const groupsArr = [];
