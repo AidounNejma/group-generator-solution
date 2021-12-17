@@ -22,7 +22,7 @@ function addParticipant(event){
 
     //Je créé un élément li qui contient mon prénom
     const participantElt = `
-    <li class="participant">${participantName}</li>
+    <li class="participant">${participantName} <i class="fas fa-trash"></i> </li>
     `;
 
     //Je récupère l'élément ul qui contient la liste des participants
@@ -56,11 +56,14 @@ function generateGroups(participants, numberGroups){
 // Applique une fonction sur chaque élément du tableau 
 // Et retourne un nouveau tableau
 const sorted = participants
-.map((participant) => ({ name : participant, sort: Math.random() }))
-.sort((a, b) => a.sort - b.sort)
-.map((participant) => participant.name)
 
+/* .map((participant) => ({ name : participant, sort: Math.random() }))
+.sort((a, b) => a.sort - b.sort)
+.map((participant) => participant.name) */
+
+sorted.sort((a, b) => 0.5 - Math.random());
 //console.log(sorted)
+
 //Je veux générer des groupes de nom
 const groupsArr = [];
 for(let i = 0; i < numberGroups; i++){
@@ -102,6 +105,7 @@ groupElt += `
 groupListElt.innerHTML += groupElt
 }
 }
+
 
 const generateForm = document.getElementById('generateGroup');
 generateForm.addEventListener('submit', function(event) {
@@ -145,3 +149,13 @@ generateForm.addEventListener('submit', function(event) {
     generateGroups(participants, numberGroups)
 
 })
+
+let deleteElt = document.getElementById("participantList");
+
+deleteElt.addEventListener('click', e =>{
+    if (e.target.classList.contains("fa-trash")) {
+        e.target.parentNode.remove();
+}
+});
+
+
